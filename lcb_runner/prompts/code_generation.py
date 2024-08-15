@@ -284,6 +284,101 @@ def format_prompt_generation(
         prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
 
+    if LanguageModelStyle == LMStyle.CodeLLaMaInstruct:
+        prompt = f"[INST] <<SYS>>\n"
+        prompt += f"{PromptConstants.SYSTEM_MESSAGE_GENERIC}\n"
+        prompt += f"<</SYS>>\n\n"
+        prompt += f"{get_cllama_question_template_answer(question)}\n"
+        prompt += f"[/INST]"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.MagiCoder:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_MAGIC}\n"
+        prompt += f"{get_magicoder_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.WizardCoder:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_WIZARD}\n\n"
+        prompt += f"{get_wizard_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.Phind:
+        prompt = f"### System Prompt\n\n"
+        prompt += f"{PromptConstants.SYSTEM_MESSAGE_PHIND}\n\n"
+        prompt += f"### User Message\n\n"
+        prompt += f"{get_phind_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.OC:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_GENERIC}\n\n"
+        prompt += f"{get_generic_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.Eurusx:
+        prompt = "[INST] Write Python code to solve the task:\n"
+        prompt += f"{get_generic_question_template_answer(question)}"
+        prompt += "[/INST]"
+        return prompt
+
+    if (
+        LanguageModelStyle == LMStyle.Smaug2
+        or LanguageModelStyle == LMStyle.Qwen1point5
+    ):
+        prompt = f"{get_qwen_question_template_answer(question)}"
+        return prompt
+    
+    if LanguageModelStyle == LMStyle.Mistral:
+        chat_messages = [
+            {
+                "role": "system",
+                "content": PromptConstants.SYSTEM_MESSAGE_GENERIC,
+            },
+        ]
+        chat_messages += [
+            {
+                "role": "user",
+                "content": get_generic_question_template_answer(question),
+            },
+        ]
+        from transformers import AutoTokenizer
+
+        tokenizer = AutoTokenizer.from_pretrained(
+            "mistralai/Mistral-7B-Instruct-v0.3", padding_side="left", use_fast=False
+        )
+        return tokenizer.apply_chat_template(
+            chat_messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            truncation=False,
+            padding=False,
+        )
+
+    if LanguageModelStyle == LMStyle.Yi:
+        chat_messages = [
+            {
+                "role": "system",
+                "content": PromptConstants.SYSTEM_MESSAGE_GENERIC,
+            },
+        ]
+        chat_messages += [
+            {
+                "role": "user",
+                "content": get_generic_question_template_answer(question),
+            },
+        ]
+        from transformers import AutoTokenizer
+
+        tokenizer = AutoTokenizer.from_pretrained(
+            "01-ai/Yi-1.5-6B-Chat", padding_side="left", use_fast=False
+        )
+        return tokenizer.apply_chat_template(
+            chat_messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            truncation=False,
+            padding=False,
+        )
+    
     if LanguageModelStyle == LMStyle.GenericBase:
         prompt = get_base_model_question_template_answer(question)
         return prompt

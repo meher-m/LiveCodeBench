@@ -27,6 +27,8 @@ class LMStyle(Enum):
     QwQ = "QwQ"
 
     LLaMa3 = "LLaMa3"
+    Mistral = "Mistral"
+    Yi = "Yi"
 
 
 @dataclass
@@ -486,6 +488,55 @@ LanguageModelList: list[LanguageModel] = [
     ),
     ## Mistral Web
     LanguageModel(
+        "mistralai/Mistral-7B-Instruct-v0.1",
+        "Mistral-7b-Ins-v0.1",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1",
+    ),
+    LanguageModel(
+        "mistralai/Mistral-7B-Instruct-v0.2",
+        "Mistral-7b-Ins-v0.2",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2",
+    ),
+    LanguageModel(
+        "mistralai/Mistral-7B-Instruct-v0.3",
+        "Mistral-7b-Ins-v0.3",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+    ),
+    LanguageModel(
+        "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "Mistral-8x7B-Ins-v0.1",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    ),
+    LanguageModel(
+        "mistralai/Mixtral-8x22B-Instruct-v0.1",
+        "Mistral-8x22B-Ins-v0.1",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1",
+    ),
+    LanguageModel(
+        "mistralai/Mistral-Nemo-Instruct-2407",
+        "Mistral-Nemo-Ins-2407",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407",
+    ),
+    LanguageModel(
+        "mistralai/Mistral-Large-Instruct-2407",
+        "Mistral-Large-Ins-2407",
+        LMStyle.Mistral,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/mistralai/Mistral-Large-Instruct-2407",
+    ),
+    LanguageModel(
         "mistral-large-latest",
         "Mistral-Large",
         LMStyle.MistralWeb,
@@ -573,6 +624,27 @@ LanguageModelList: list[LanguageModel] = [
         LMStyle.CodeQwenInstruct,
         datetime(2024, 6, 30),
         link="https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    ),
+    LanguageModel(
+        "01-ai/Yi-1.5-6B-Chat",
+        "Yi-1.5-6B-Chat",
+        LMStyle.Yi,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/01-ai/Yi-1.5-6B-Chat",
+    ),
+    LanguageModel(
+        "01-ai/Yi-1.5-9B-Chat",
+        "Yi-1.5-9B-Chat",
+        LMStyle.Yi,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/01-ai/Yi-1.5-9B-Chat",        
+    ),
+    LanguageModel(
+        "01-ai/Yi-1.5-34B-Chat",
+        "Yi-1.5-34B-Chat",
+        LMStyle.Yi,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/01-ai/Yi-1.5-34B-Chat",
     ),
 ]
 
