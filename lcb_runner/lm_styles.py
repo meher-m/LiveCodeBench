@@ -26,6 +26,15 @@ class LMStyle(Enum):
     CodeQwenInstruct = "CodeQwenInstruct"
     QwQ = "QwQ"
 
+    Phind = "Phind"
+    WizardCoder = "WizardCoder"
+    MagiCoder = "MagiCoder"
+    OC = "OC"
+    Eurusx = "Eurusx"
+
+    Qwen1point5 = "Qwen1point5"
+    Smaug2 = "Smaug2"
+
     LLaMa2 = "LLaMa2"
     LLaMa3 = "LLaMa3"
     Mistral = "Mistral"
